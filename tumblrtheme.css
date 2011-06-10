@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="color:Background" content="#ffffff"/>
+    <meta name="font:Body" content="'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif"/>
+    <meta name="color:Separator" content="#eeeeee"/>
+    <meta name="color:Description" content="#eeeeee"/>
+    <meta name="color:Post Info" content="#aaaaaa"/>    
+    <meta name="text:Disqus Shortname" content="" />
+    <title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:PostSummary}{PostSummary} - {/block:PostSummary}{Title}</title>
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    <link rel="stylesheet" href="http://static.tumblr.com/shrl2lc/Vtnkhc48t/betaprime-v1.css"/>
+    <link rel="stylesheet" href="http://static.tumblr.com/shrl2lc/Zjmkh4u4l/notes.css" type="text/css"/>
+    <script src="http://static.tumblr.com/shrl2lc/Kb0kl4vtp/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(function(){
+        $("body").keydown(function(e){ var key = e.charCode || e.keyCode || 0; if(key == "37" && $(".prev").length !== 0){ location.href = $(".prev").attr("href")} if(key == "39" && $(".next").length !== 0){ location.href = $(".next").attr("href") } })
+        $("body").prepend("<h2>Read more about me</h2>")
+        $("h2").before($("#desc").css({"margin-bottom":"20px"}).hide())
+        $("h2").click(function(){ $("#desc").slideToggle(500) })
+      })
+    </script>
+<link rel="shortcut icon" href="{Favicon}" />
+{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+  <style type="text/css">
+    body {
+      font-family: {font:Body};
+      background-color: {color:Background};
+    }
+
+    #desc {
+      background-color: {color:Description};
+      width:500px;
+    }
+
+    .info {
+      color: {color:Post Info};
+    }
+
+    .post {
+      border-color: {color:Separator};
+    }
+
+    .text img {
+      max-width: 500px;
+    }
+
+    .text blockquote img {
+      max-width: 150px;
+    }
+    
+    a.comments_link {
+        color: #aaa;
+        text-decoration: none;
+    }
+    
+    #disqus_thread {
+        padding: 20px 0;
+        clear: both;
+    }
+    
+    a.tags:link {
+        color: {color:Post Info};
+    }
+
+    a.tags:hover {
+        color:#000;
+    }
+ 
+    {CustomCSS}
+  </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="head">
+        <h1><a href="/">{Title}</a></h1>
+        {block:HasPages}
+          <br/><br/>
+            {block:Pages}<a href="{URL}">{Label}</a>&nbsp;&nbsp;{/block:Pages}
+          <br/><br/>
+        {/block:HasPages}
+        {block:AskEnabled}<a href="/ask">{AskLabel}</a>&nbsp;&nbsp;{/block:AskEnabled}
+        {block:SubmissionsEnabled}<a href="/submit">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+      </div>
+      
+      <div id="content">
+        
+        {block:Posts}
+        
+        {block:Text}
+        <div class="post text">
+          {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+          {block:Title}<h3>{Title}</h3>{/block:Title}
+          {Body}
+                    
+          {block:HasTags}<div class="info">Tags: {block:Tags}<a class="tags" href="{TagURL}">#{Tag}</a> {/block:Tags}</div>{/block:HasTags}
+          {block:Date}<div class="info">{lang:This was posted TimeAgo}. {block:IfDisqusShortname}{lang:It has NoteCount notes and 0 comments}{/block:IfDisqusShortname}{block:IfNotDisqusShortname}{lang:It has NoteCount notes}{/block:IfNotDisqusShortname}.</div>{/block:Date}
+        </div>
+        {/block:Text}
+        
+        {block:Photo}
+        <div class="post photo">
+          {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+          {LinkOpenTag}<img alt="{PhotoAlt}" src="{PhotoURL-500}"/>{LinkCloseTag}
+          {block:Caption}{Caption}{/block:Caption}
+          
+          {block:HasTags}<div class="info">Tags: {block:Tags}<a class="tags" href="{TagURL}">#{Tag}</a> {/block:Tags}</div>{/block:HasTags}
+          {block:Date}<div class="info">{lang:This was posted TimeAgo}. {block:IfDisqusShortname}{lang:It has NoteCount notes and 0 comments}{/block:IfDisqusShortname}{block:IfNotDisqusShortname}{lang:It has NoteCount notes}{/block:IfNotDisqusShortname}. <a href="{PhotoURL-HighRes}">{lang:View high-resolution}</a>.{/block:HighRes}</div>{/block:Date}
+        </div>
+        {/block:Photo}
+        
+        {block:Quote}
+        <div class="post quote">
+          {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+          <div class="deco">&#8220;</div>
+          <blockquote>{Quote}</blockquote>
+          {block:Source}<cite>{Source}</cite>{/block:Source} 
+          {block:HasTags}<div class="info">Tags: {block:Tags}<a class="tags" href="{TagURL}">#{Tag}</a> {/block:Tags}</div>{/block:HasTags}
+          {block:Date}<div class="info">{lang:This was posted TimeAgo}. {block:IfDisqusShortname}{lang:It has NoteCount notes and 0 comments}{/block:IfDisqusShortname}{block:IfNotDisqusShortname}{lang:It has NoteCount notes}{/block:IfNotDisqusShortname}.</div>{/block:Date}
+        </div>
+        {/block:Quote}
+        
+        {block:Link}
+        <div class="post link">
+          {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+          <a class="go" href="{URL}">{Name}</a>
+          {block:Description}{Description}{/block:Description} 
+          {block:HasTags}<div class="info">Tags: {block:Tags}<a class="tags" href="{TagURL}">#{Tag}</a> {/block:Tags}</div>{/block:HasTags}
+          {block:Date}<div class="info">{lang:This was posted TimeAgo}. {block:IfDisqusShortname}{lang:It has NoteCount notes and 0 comments}{/block:IfDisqusShortname}{block:IfNotDisqusShortname}{lang:It has NoteCount notes}{/block:IfNotDisqusShortname}.</div>{/block:Date}
+        </div>
+        {/block:Link}
+        
+        {block:Chat}
+        <div class="post chat">
+          {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+          {block:Title}<h3>{Title}</h3>{/block:Title}
+          <ul class="conv">
+            {block:Lines}<li class="{Alt}">{block:Label}<strong>{Label}</strong> {/block:Label}{Line}</li>{/block:Lines}
+          </ul> 
+          {block:HasTags}<div class="info">Tags: {block:Tags}<a class="tags" href="{TagURL}">#{Tag}</a> {/block:Tags}</div>{/block:HasTags}
+          {block:Date}<div class="info">{lang:This was posted TimeAgo}. {block:IfDisqusShortname}{lang:It has NoteCount notes and 0 comments}{/block:IfDisqusShortname}{block:IfNotDisqusShortname}{lang:It has NoteCount notes}{/block:IfNotDisqusShortname}.</div>{/block:Date}
+        </div>
+        {/block:Chat}
+        
+        {block:Audio}
+        <div class="post audio">
+          {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+          {AudioPlayerWhite}
+          {block:Caption}{Caption}{/block:Caption} 
+          {block:HasTags}<div class="info">Tags: {block:Tags}<a class="tags" href="{TagURL}">#{Tag}</a> {/block:Tags}</div>{/block:HasTags}
+          {block:Date}<div class="info">{lang:This was posted TimeAgo}. {block:IfDisqusShortname}{lang:It has NoteCount notes and 0 comments}{/block:IfDisqusShortname}{block:IfNotDisqusShortname}{lang:It has NoteCount notes}{/block:IfNotDisqusShortname}. {lang:Played PlayCount times}.</div>{/block:Date}
+        </div>
+        {/block:Audio}
+        
+        {block:Video}
+        <div class="post video">
+          {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
+          {Video-500}
+          {block:Caption}{Caption}{/block:Caption}
+          {block:HasTags}<div class="info">Tags: {block:Tags}<a class="tags" href="{TagURL}">#{Tag}</a> {/block:Tags}</div>{/block:HasTags}
+          {block:Date}<div class="info">{lang:This was posted TimeAgo}. {block:IfDisqusShortname}{lang:It has NoteCount notes and 0 comments}{/block:IfDisqusShortname}{block:IfNotDisqusShortname}{lang:It has NoteCount notes}{/block:IfNotDisqusShortname}.</div>{/block:Date}
+        </div>
+        {/block:Video}
+        
+        {block:Date}
+        {block:IfDisqusShortname}
+        {block:Permalink}
+        <div id="disqus_thread"></div>
+        <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+        <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
+        {/block:Permalink}
+        {/block:IfDisqusShortname}
+        {block:Date}
+        
+        {block:PostNotes}
+          {PostNotes}
+        {/block:PostNotes}
+        {/block:Posts}
+        
+        {block:Pagination}
+        <div id="nav">
+          {block:PreviousPage}<a href="{PreviousPage}" class="prev">{lang:Previous page}</a>{/block:PreviousPage}
+          {block:NextPage}<a href="{NextPage}" class="next">{lang:Next page}</a>{/block:NextPage}
+          <div class="clr"></div>
+        </div>
+         {/block:Pagination}
+      </div>
+      
+      <div id="footer">
+        <div id="desc">
+          {Description}
+        </div>
+        <p>Powered by <a href="http://tumblr.com">Tumblr</a> and designed by <a href="http://nothingconcept.com">Evan Walsh</a>.  View some <a href="/archive">archived posts</a> if you please.</p>
+      </div>
+    </div>
+    
+    {block:IfDisqusShortname}
+    <script type="text/javascript">
+    //<![CDATA[
+    (function() {
+        var links = document.getElementsByTagName('a');
+        var query = '?';
+        for(var i = 0; i < links.length; i++) {
+        if(links[i].href.indexOf('#disqus_thread') >= 0) {
+            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+        }
+        }
+        document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
+    })();
+    //]]>
+    </script>
+    {/block:IfDisqusShortname}
+  </body>
+</html>
