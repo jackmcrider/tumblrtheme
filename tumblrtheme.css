@@ -3,9 +3,8 @@
   <head>
     <meta name="color:Background" content="#ffffff"/>
     <meta name="font:Body" content="'Helvetica Neue',Helvetica,Arial,'Liberation Sans',FreeSans,sans-serif"/>
-    <meta name="color:Separator" content="#eeeeee"/>
     <meta name="color:Description" content="#eeeeee"/>
-    <meta name="color:Post Info" content="#aaaaaa"/>    
+    <meta name="color:Post Info" content="#777777"/>    
     <meta name="text:Disqus Shortname" content="" />
     <title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:PostSummary}{PostSummary} - {/block:PostSummary}{Title}</title>
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
@@ -38,7 +37,7 @@
     }
 
     .post {
-      border-color: {color:Separator};
+       border-color: #fff
     }
 
     .text img {
@@ -50,7 +49,7 @@
     }
     
     a.comments_link {
-        color: #aaa;
+        color: {color:Post Info};
         text-decoration: none;
     }
     
@@ -65,6 +64,12 @@
 
     a.tags:hover {
         color:#000;
+    }
+
+    blockquote {
+        padding-left: 10px;
+        margin-left: 10px;
+        border-left: 3px solid {color:Post Info};
     }
  
     {CustomCSS}
@@ -86,6 +91,8 @@
       <div id="content">
         
         {block:Posts}
+
+        {block:NewDayDate}<h3>{DayOfMonthWithZero}.{MonthNumberWithZero}.{ShortYear}</h3>{/block:NewDayDate}
         
         {block:Text}
         <div class="post text">
@@ -112,7 +119,6 @@
         {block:Quote}
         <div class="post quote">
           {block:Date}<a href="{Permalink}" class="permalink">#</a>{/block:Date}
-          <div class="deco">&#8220;</div>
           <blockquote>{Quote}</blockquote>
           {block:Source}<cite>{Source}</cite>{/block:Source} 
           {block:HasTags}<div class="info">Tags: {block:Tags}<a class="tags" href="{TagURL}">#{Tag}</a> {/block:Tags}</div>{/block:HasTags}
